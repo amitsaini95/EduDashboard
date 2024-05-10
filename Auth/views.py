@@ -3,6 +3,7 @@ from .forms import studentForm,UserRegisterForm,schoolForm
 from django.contrib.auth import authenticate,login,logout
 from Auth.models import User
 from student.views import *
+from school.views import *
 # Create your views here.
 def StudentRegisterView(request):
     if request.method == "POST":
@@ -52,7 +53,7 @@ def LoginView(request):
                 if request.user.types=="student":
                     return redirect('student:Dashboard')
                 elif request.user.types=="school":
-                    return redirect('/')
+                    return redirect('school:Dashboard')
     else:
         form=UserRegisterForm()
     context={
