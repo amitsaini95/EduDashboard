@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,HttpResponse
-from .forms import studentForm,UserRegisterForm,schoolForm
+from .forms import UserRegisterForm,schoolForm
 from django.contrib.auth import authenticate,login,logout
 from Auth.models import User
 from student.views import *
