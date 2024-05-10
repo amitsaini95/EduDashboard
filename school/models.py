@@ -18,6 +18,7 @@ class SchoolProfile(models.Model):
     district=models.CharField(null=True,blank=True,max_length=100)
     block=models.CharField(null=True,blank=True,max_length=100)
     village=models.CharField(null=True,blank=True,max_length=100)
+    schoolLogo=models.ImageField(upload_to="schoolLogo",null=True,blank=True)
     pinCode=models.IntegerField(null=True,blank=True)
     schoolCategory=models.CharField(null=True,blank=True,max_length=50)
     principalName=models.CharField(null=True,blank=True,max_length=50)
