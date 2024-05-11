@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate,login,logout
 from Auth.models import User
 from student.views import *
 from school.views import *
+from school.models import *
 
 # Create your views here.
 def StudentRegisterView(request):
@@ -55,11 +56,16 @@ def LoginView(request):
                     return redirect('student:Dashboard')
                 elif request.user.types=="school":
                     return redirect('school:Dashboard')
+                
+                    
     else:
         form=UserRegisterForm()
     context={
         'form':form
     }
     return render(request,"base/login.html",context)
+def LogoutView(request):
+    logout(request)
+    return redirect('/')
 
   

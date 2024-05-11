@@ -4,8 +4,7 @@ from .models import User
 class studentForm(forms.ModelForm):
     class Meta:
         model=StudentProfile
-        fields=('__all__')
-        exclude=('authAdmin','author','publish','status')
+        fields=('name','gender','phoneNo','schoolName')
     def __init__(self,*args,**kwargs):
         super(studentForm,self).__init__(*args,**kwargs)
         for fieldName,fields in self.fields.items():

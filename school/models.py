@@ -40,8 +40,8 @@ class SchoolProfile(models.Model):
         return super(SchoolProfile,self).save(*args,**kwargs)
     
 class SchoolStudent(models.Model):
-    schools=models.ForeignKey('school.SchoolProfile',on_delete=models.CASCADE)
-    student=models.ForeignKey('student.StudentProfile',on_delete=models.CASCADE,related_name="students")
+    schools=models.ForeignKey('school.SchoolProfile',on_delete=models.CASCADE,null=True,blank=True)
+    student=models.ForeignKey('student.StudentProfile',on_delete=models.CASCADE,related_name="students",null=True,blank=True)
     studentName=models.CharField(max_length=60)
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
