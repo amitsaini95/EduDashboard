@@ -40,9 +40,12 @@ class SchoolProfile(models.Model):
         return super(SchoolProfile,self).save(*args,**kwargs)
     
 class SchoolStudent(models.Model):
-    schools=models.ForeignKey('school.SchoolProfile',on_delete=models.CASCADE,null=True,blank=True)
+    schools=models.ForeignKey('school.SchoolProfile',on_delete=models.CASCADE,null=True,blank=True,related_name="studentSchools")
     student=models.ForeignKey('student.StudentProfile',on_delete=models.CASCADE,related_name="students",null=True,blank=True)
     studentName=models.CharField(max_length=60)
+    email=models.EmailField()
+    phoneNo=models.BigIntegerField()
+    
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

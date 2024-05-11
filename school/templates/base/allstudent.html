@@ -9,17 +9,18 @@
             <th scope="col">email</th>
             <th scope="col">phoneno</th>
             <th scope="col">school Name</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
             {% for stuSchool in schoolStudent %}
           <tr>
             <th scope="row">{{forloop.counter}}</th>
-            <td>{{stuSchool.student.name}}</td>
-            <td>{{stuSchool.student.email}}</td>
-
-            <td>{{stuSchool.student.phoneNo}}</td>
+            <td>{{stuSchool.studentName}}</td>
+            <td>{{stuSchool.email}}</td>
+            <td>{{stuSchool.phoneNo}}</td>
             <td>{{stuSchool.schools}}</td>
+            <td><a href="{% url 'school:editstudentprofile' stuSchool.id %} ">Edit</a></td>
           </tr>
           {% endfor %}
          
