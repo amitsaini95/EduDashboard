@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate,login,logout
 from Auth.models import User
 from student.views import *
 from school.views import *
+
 # Create your views here.
 def StudentRegisterView(request):
     if request.method == "POST":

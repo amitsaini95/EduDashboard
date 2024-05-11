@@ -13,7 +13,7 @@ class schoolForm(forms.ModelForm):
     class Meta:
         model=SchoolProfile
         fields=('__all__')
-        exclude=('authAdmin','author','slug','publish','status')
+        exclude=('authAdmin','author','slug','publish','status','studentList')
     def __init__(self,*args,**kwargs):
         super(schoolForm,self).__init__(*args,**kwargs)
         for fieldName,fields in self.fields.items():

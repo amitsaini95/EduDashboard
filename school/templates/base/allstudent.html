@@ -1,0 +1,29 @@
+{% extends 'base/schoolBase.html' %}
+{% block content %}
+<div class="main">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">S.NO</th>
+            <th scope="col">Name</th>
+            <th scope="col">email</th>
+            <th scope="col">phoneno</th>
+            <th scope="col">school Name</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for stuSchool in schoolStudent %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{stuSchool.student.name}}</td>
+            <td>{{stuSchool.student.email}}</td>
+
+            <td>{{stuSchool.student.phoneNo}}</td>
+            <td>{{stuSchool.schools}}</td>
+          </tr>
+          {% endfor %}
+         
+        </tbody>
+      </table>
+</div>
+{% endblock %}

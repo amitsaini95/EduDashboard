@@ -1,7 +1,37 @@
 {% extends 'base/schoolBase.html' %}
+
 {% block content %}
 <div class="main">
-    <h1>school DashBoard</h1>
+    <div class="row">
+        <div class="col-3">
+            
+            <div class="card-group">
+                <a href="{% url 'school:Allstudentlist' %}">
+           
+            <h5>Total student <span>({{totalstudent}})</span></h5>
+         </a>
+            </div>
+        </div>
+        <div class="col-3 ">
+               <div class="card-group">
+
+            <h5>Total student</h5>
+            </div>
+        </div>
+        <div class="col-3 ">
+               <div class="card-group">
+
+            <h5>Total student</h5>
+            </div>
+        </div>
+        <div class="col-3 ">
+               <div class="card-group">
+
+            <h5>Total student</h5>
+            </div>
+        </div>
+    </div>
+  
 </div>
 
 {% endblock %}

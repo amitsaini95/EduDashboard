@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'Auth.apps.AuthConfig',
     'school.apps.SchoolConfig',
     'staff.apps.StaffConfig',
-    'teacher.apps.TeacherConfig',
     'student.apps.StudentConfig',
     
 ]

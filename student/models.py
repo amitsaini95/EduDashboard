@@ -1,6 +1,7 @@
 from django.db import models
 from Auth.models import User
-from school.models import SchoolProfile
+
+from school.models import *
 from django.utils import timezone
 # Create your models here.
 GENDER_CHOICES=(
@@ -24,7 +25,7 @@ STATUS_CHOICES = (
 	('published', 'Published'),
 )
 class StudentProfile(models.Model):
-    author=models.ForeignKey(User,on_delete=models.CASCADE,related_name="StudentUsers",null=True)
+    author=models.ForeignKey('Auth.User',on_delete=models.CASCADE,related_name="StudentUsers",null=True)
     name=models.CharField(max_length=100)
     phoneNo=models.BigIntegerField()
     address=models.TextField()
