@@ -1,7 +1,8 @@
 from django.db import models
 from Auth.models import User
-from django.utils.text import slugify
 from school.models import *
+from teacher.models import *
+from django.utils.text import slugify
 from django.utils import timezone
 # Create your models here.
 GENDER_CHOICES=(
@@ -23,6 +24,16 @@ STATUS_CHOICES = (
 	('published', 'Published'),
 )
   
+
+class StudentClass(models.Model):
+	name=models.CharField(max_length=20)
+	slug=models.SlugField(max_length=20,blank=True)
+	publish = models.DateTimeField(default=timezone.now)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+	def __str__(self):
+		return self.name
 
 
 class state(models.Model):
@@ -92,3 +103,15 @@ class StudentProfileModel(models.Model):
     updated = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.name
+class StudentAttendance(models.Model):
+	school=models.ForeignKey('school.SchoolProfileModel',on_delete=models.CASCADE)
+	studentClass=models.ForeignKey('student.StudentClass',on_delete=models.CASCADE)
+	teacher=models.ForeignKey('teacher.TeacherProfileModel',on_delete=models.CASCADE)
+	section=models.CharField(max_length=10)
+	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft', null=True, blank=True)
+	publish = models.DateTimeField(default=timezone.now)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+	def __str__(self):
+		return self.studentClass.name
+

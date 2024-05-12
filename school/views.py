@@ -77,7 +77,7 @@ def EditStudentProfile(request,id):
     }
     return render(request,"base/editstudentProfile.html",context)
 def TeacherListView(request):
-    teacherdata=TeacherProfileModel.objects.filter(schoolName__name=request.user)
+    teacherdata=TeacherProfileModel.objects.filter(schoolName__name=request.user).order_by('-id')
     context={'teachers':teacherdata}
     return render(request,"base/allteacher.html",context)
 def EditTeacherView(request,id):
