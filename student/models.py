@@ -106,6 +106,7 @@ class StudentProfileModel(models.Model):
 class StudentAttendance(models.Model):
 	school=models.ForeignKey('school.SchoolProfileModel',on_delete=models.CASCADE)
 	studentClass=models.ForeignKey('student.StudentClass',on_delete=models.CASCADE)
+	studentName=models.ForeignKey('student.StudentProfileModel',on_delete=models.CASCADE)
 	teacher=models.ForeignKey('teacher.TeacherProfileModel',on_delete=models.CASCADE)
 	section=models.CharField(max_length=10)
 	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft', null=True, blank=True)
@@ -113,5 +114,5 @@ class StudentAttendance(models.Model):
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
 	def __str__(self):
-		return self.studentClass.name
+		return self.studentName.name
 

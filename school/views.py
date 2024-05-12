@@ -2,15 +2,16 @@ from django.shortcuts import render,redirect,HttpResponse
 from .models import *
 from .forms import studentForm,EditStudentProfileForm
 from teacher.forms import AddTeacherForm,EditTeacherForm
-from student.models import StudentProfileModel
+from student.models import StudentProfileModel,StudentAttendance
 from teacher.models import TeacherProfileModel
 # Create your views here.
 def SchoolDashboardView(request):
     school=SchoolStudentsModel.objects.filter(schoolProf__author=request.user)
     teacherdata=TeacherProfileModel.objects.filter(schoolName__name=request.user)
-    
-    
-    context={'school':school,'TotalTeacher':teacherdata}
+    StuAttend=StudentAttendance.objects.filter(school__author=request.user,status='published')
+  
+    print(StuAttend)
+    context={'school':school,'TotalTeacher':teacherdata,'StudAttend':StuAttend}
     return render(request,"base/schooldashboard.html",context)
 
 def SchoolStudentView(request):
@@ -77,7 +78,7 @@ def EditStudentProfile(request,id):
     }
     return render(request,"base/editstudentProfile.html",context)
 def TeacherListView(request):
-    teacherdata=TeacherProfileModel.objects.filter(schoolName__name=request.user).order_by('-id')
+    teacherdata=TeacherProfileModel.objects.filter(schoolName__author=request.user).order_by('-id')
     context={'teachers':teacherdata}
     return render(request,"base/allteacher.html",context)
 def EditTeacherView(request,id):
@@ -93,3 +94,10 @@ def EditTeacherView(request,id):
         'form':form
     }
     return render(request,"base/editteacher.html",context)
+def StudentAttendanceView(request):
+    stuData=StudentAttendance.objects.filter(school__author=request.user,status='published')
+    context={
+        'stuData':stuData
+    }
+    return render(request,"base/studentattendance.html",context)
+
