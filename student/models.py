@@ -1,6 +1,6 @@
 from django.db import models
 from Auth.models import User
-
+from django.utils.text import slugify
 from school.models import *
 from django.utils import timezone
 # Create your models here.
@@ -41,6 +41,10 @@ class state(models.Model):
 
 	class Meta:
 		verbose_name_plural = 'Student-State'
+	def save(self,*args,**kwargs):
+		self.slug=slugify(self.name)
+		return super(state,self).save(*args,**kwargs)
+    
 class city(models.Model):
 	name = models.TextField()
 	slug = models.SlugField(max_length=250, unique=True)
@@ -58,6 +62,9 @@ class city(models.Model):
 
 	class Meta:
 		verbose_name_plural = 'Student-City'
+	def save(self,*args,**kwargs):
+		self.slug=slugify(self.name)
+		return super(city,self).save(*args,**kwargs)
   
       
 class StudentProfileModel(models.Model):
