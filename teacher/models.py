@@ -10,7 +10,7 @@ class TeacherProfileModel(models.Model):
     email=models.EmailField()
     phoneNo=models.BigIntegerField()
     schoolName=models.ForeignKey('school.SchoolProfileModel',on_delete=models.CASCADE,related_name="teacherSchool")
-    profile=models.ImageField(upload_to="teacherProfile")
+    profile=models.ImageField(upload_to="teacherProfile",null=True,blank=True)
     address=models.TextField()
     city=models.ForeignKey('student.city',on_delete=models.CASCADE,related_name="teacherCity")
     state=models.ForeignKey('student.state',on_delete=models.CASCADE,related_name="teacherState")

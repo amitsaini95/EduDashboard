@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from .models import User
 from school.models import SchoolProfileModel
 
+
    
 class UserRegisterForm(AuthenticationForm):
     class Meta:
@@ -18,5 +19,7 @@ class schoolForm(forms.ModelForm):
         super(schoolForm,self).__init__(*args,**kwargs)
         for fieldName,fields in self.fields.items():
             fields.widget.attrs['class']='form-control'
+
+    
 
 

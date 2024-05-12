@@ -1,0 +1,30 @@
+{% extends 'base/schoolBase.html' %}
+{% block content %}
+<div class="main">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">S.NO</th>
+            <th scope="col">Name</th>
+            <th scope="col">email</th>
+            <th scope="col">phoneno</th>
+            <th scope="col">school Name</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for stuSchool in schoolStudent %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{stuSchool.studentName}}</td>
+            <td>{{stuSchool.email}}</td>
+            <td>{{stuSchool.phoneNo}}</td>
+            <td>{{stuSchool.schoolProf}}</td>
+            <td><a href="{% url 'school:editstudentprofile' stuSchool.id %} ">Edit</a></td>
+          </tr>
+          {% endfor %}
+         
+        </tbody>
+      </table>
+</div>
+{% endblock %}

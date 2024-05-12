@@ -16,7 +16,11 @@
         <div class="col-3 ">
                <div class="card-group">
 
-            <h5>Total student</h5>
+                <a href="{% url 'school:teacherlist' %}">
+           
+                
+                    <h5>Total Teacher: <span>{{school.count}}</span></h5>
+                 </a>
             </div>
         </div>
         <div class="col-3 ">

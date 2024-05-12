@@ -64,6 +64,7 @@ def LoginView(request):
         'form':form
     }
     return render(request,"base/login.html",context)
+
 def LogoutView(request):
     logout(request)
     return redirect('/')
