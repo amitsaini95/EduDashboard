@@ -44,7 +44,6 @@
     justify-content:space-around;
     gap: 30px;
     margin:20px 0px;
-   
     width: 100%;
     
 }
@@ -53,7 +52,8 @@
 }
 
 .MainContainer{
-    width: 85.6%;
+    /* width: 83.6%; */
+    width: 90%;
 }
 .main .card-group{
    width:100%;

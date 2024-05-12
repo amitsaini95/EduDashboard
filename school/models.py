@@ -51,4 +51,21 @@ class SchoolStudentsModel(models.Model):
     def __str__(self):
         return self.studentName
   
+class schoolBoard(models.Model):
+	name = models.CharField(max_length=250, null=True, blank=True)
+	slug = models.SlugField(max_length=250, unique=True, null=True, blank=True)
+	description = models.TextField(null=True, blank=True)
+	author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='authorSB', null=True, blank=True)
+	publish = models.DateTimeField(default=timezone.now)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+
+
+	def __str__(self):
+		return self.name or "--Name not Provided--"
+
+	class Meta:
+		verbose_name_plural = 'School-School Board'
+
 
