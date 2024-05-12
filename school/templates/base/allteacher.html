@@ -1,7 +1,7 @@
 {% extends 'base/schoolBase.html' %}
 {% block content %}
-<div class="main">
-    <table class="table">
+
+    <table class="table table-bordered table-striped ">
         <thead>
           <tr>
             <th scope="col">S.NO</th>
@@ -9,22 +9,40 @@
             <th scope="col">email</th>
             <th scope="col">phoneno</th>
             <th scope="col">school Name</th>
+            <th scope="col">profile</th>
+            <th scope="col">address</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col">Role</th>
+            <th scope="col">teachOfClass</th>
+            <th scope="col">Total student</th>
             <th scope="col">Action</th>
-          </tr>
+        </tr>
         </thead>
         <tbody>
-            {% for stuSchool in schoolStudent %}
+            {% for teacher in teachers %}
           <tr>
             <th scope="row">{{forloop.counter}}</th>
-            <td>{{stuSchool.studentName}}</td>
-            <td>{{stuSchool.email}}</td>
-            <td>{{stuSchool.phoneNo}}</td>
-            <td>{{stuSchool.schoolProf}}</td>
-            <td><a href="{% url 'school:editstudentprofile' stuSchool.id %} ">Edit</a></td>
+            <td >{{teacher.name}}</td>
+            <td>{{teacher.email}}</td>
+            <td>{{teacher.phoneNo}}</td>
+            <td>{{teacher.schoolName.name}}</td>
+            <td><img src="{{teacher.profile.urls}}" alt="" srcset="" width="40" height="40"></td>
+            <td>{{teacher.address}}</td>
+            <td>{{teacher.city}}</td>
+            <td>{{teacher.state}}</td>
+            
+            <td>{{teacher.role}}</td>
+            <td>{{teacher.teachOfClass}}</td>
+            <td>{{teacher.totalOfStudent.count}}</td>
+            
+
+            <td><a href="{% url 'school:editTeacherProfile' teacher.id %}">Edit</a></td>
+    
           </tr>
           {% endfor %}
          
         </tbody>
       </table>
-</div>
+
 {% endblock %}

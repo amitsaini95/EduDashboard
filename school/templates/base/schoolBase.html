@@ -11,7 +11,8 @@
 </head>
 <body>
     {% if request.user.types == "school" %}
-    <header>
+    <div class="main">
+    <header class="NavContainer">
         <div class="container">
             <div class="row">
                 <div class="col-12 ">
@@ -49,10 +50,10 @@
         </div>
      
     </header>
-    <section>
+    <section class="MainContainer">
         <div class="container">
             <div class="row ">
-                <div class="col-12 ">
+                <div class="col-12">
                     {% block content  %}
                   
                     {% endblock %}
@@ -60,6 +61,8 @@
             </div>
         </div>
     </section>
+
+    </div>
  <footer>
     <h2>Footer</h2>
  </footer>

@@ -6,6 +6,7 @@ urlpatterns=[
     path('addStudent',views.SchoolStudentView,name="SchoolStudent"),
     path('allstudent',views.AllstudentView,name="Allstudentlist"),
     path('student_Profile/<int:id>',views.EditStudentProfile,name="editstudentprofile"),
+    path('teacherProfile/<int:id>',views.EditTeacherView,name="editTeacherProfile"),
     path('addteacher',views.AddTeacherView,name="addteacher"),
     path('teacherList',views.TeacherListView,name="teacherlist")
 ]

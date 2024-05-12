@@ -1,7 +1,7 @@
 {% extends 'base/schoolBase.html' %}
 
 {% block content %}
-<div class="main">
+
     <div class="row">
         <div class="col-3">
             
@@ -19,7 +19,7 @@
                 <a href="{% url 'school:teacherlist' %}">
            
                 
-                    <h5>Total Teacher: <span>{{school.count}}</span></h5>
+                    <h5>Total Teacher: <span>{{TotalTeacher.count}}</span></h5>
                  </a>
             </div>
         </div>
@@ -37,6 +37,6 @@
         </div>
     </div>
   
-</div>
+
 
 {% endblock %}

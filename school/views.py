@@ -1,12 +1,16 @@
 from django.shortcuts import render,redirect,HttpResponse
 from .models import *
-from .forms import studentForm,EditStudentProfileForm,AddTeacherForm
+from .forms import studentForm,EditStudentProfileForm
+from teacher.forms import AddTeacherForm,EditTeacherForm
 from student.models import StudentProfileModel
 from teacher.models import TeacherProfileModel
 # Create your views here.
 def SchoolDashboardView(request):
     school=SchoolStudentsModel.objects.filter(schoolProf__author=request.user)
-    context={'school':school}
+    teacherdata=TeacherProfileModel.objects.filter(schoolName__name=request.user)
+    
+    
+    context={'school':school,'TotalTeacher':teacherdata}
     return render(request,"base/schooldashboard.html",context)
 
 def SchoolStudentView(request):
@@ -74,5 +78,18 @@ def EditStudentProfile(request,id):
     return render(request,"base/editstudentProfile.html",context)
 def TeacherListView(request):
     teacherdata=TeacherProfileModel.objects.filter(schoolName__name=request.user)
-    print(teacherdata)
-    return render(request,"base/allteacher.html")
+    context={'teachers':teacherdata}
+    return render(request,"base/allteacher.html",context)
+def EditTeacherView(request,id):
+    instance=TeacherProfileModel.objects.get(id=id)
+    if request.method == "POST":
+        form=EditTeacherForm(request.POST,instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    else:
+        form=EditTeacherForm(instance=instance)
+    context={
+        'form':form
+    }
+    return render(request,"base/editteacher.html",context)
