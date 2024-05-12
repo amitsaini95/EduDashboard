@@ -19,7 +19,8 @@
         <td>{{StudAttend.school}}</td>
         <td>{{StudAttend.teacher}}</td>
         <td>{{StudAttend.created}}</td>
-        <td>{{StudAttend.status}}</td>
+        
+        <td >{% if StudAttend.status == "published" %}present{% else %}Absent{% endif %}</td>
       </tr>
       {% endfor %}
      

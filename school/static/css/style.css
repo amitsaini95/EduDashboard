@@ -1,6 +1,6 @@
 .NavContainer .sidenav {
     height:100%;
-    width: 200px;
+    width: 20%;
     position: fixed;
     z-index:1;
     top:0;
@@ -39,26 +39,51 @@
     color:#f1f1f1;
 }	
 
-.main{
-    display: flex;
-    justify-content:space-around;
-    gap: 30px;
-    margin:20px 0px;
-    width: 100%;
+
+.NavContainer{
+    float: left;
     
 }
-.NavContainer{
-    width: 12%;
+
+.NavContainer .nav li{
+    display: block;
+    width: 100%;
+    
+
+}
+.NavContainer .nav li a{
+    font-size: 20px;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #f1f1f1;
+}
+.MainContainer{
+    width: 80%;
+    float: right;
+    overflow: hidden;
+
+    
+}
+.MainContainer .TeacherTable{
+    overflow-x: scroll;
+    width: 100%;
 }
 
-.MainContainer{
-    /* width: 83.6%; */
-    width: 90%;
-}
 .main .card-group{
    width:100%;
-   padding:25px;
-   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 5px 0px;
+   padding:20px;
+   height: 100%;
+
+   
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 25px 0px;
    text-align: center;
 
+}
+.MainContainer .card-group a{
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    text-decoration: none;
+    color:#111;
 }

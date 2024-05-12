@@ -95,9 +95,9 @@ def EditTeacherView(request,id):
     }
     return render(request,"base/editteacher.html",context)
 def StudentAttendanceView(request):
-    stuData=StudentAttendance.objects.filter(school__author=request.user,status='published')
+    stuData=StudentAttendance.objects.filter(school__author=request.user)
     context={
-        'stuData':stuData
+      'stuData':stuData
     }
     return render(request,"base/studentattendance.html",context)
 
