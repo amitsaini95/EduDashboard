@@ -9,7 +9,7 @@ STATUS_CHOICES = (
 	('draft', 'Draft'),
 	('published', 'Published'),
 )
-class SchoolProfile(models.Model):
+class SchoolProfileModel(models.Model):
     name=models.CharField(max_length=100)
     slug=models.SlugField(max_length=100,blank=True)
     address = models.TextField(null=True, blank=True)
@@ -20,7 +20,6 @@ class SchoolProfile(models.Model):
     block=models.CharField(null=True,blank=True,max_length=100)
     village=models.CharField(null=True,blank=True,max_length=100)
     schoolLogo=models.ImageField(upload_to="schoolLogo",null=True,blank=True)
-    studentList=models.ManyToManyField('student.StudentProfile',null=True,blank=True)
     pinCode=models.IntegerField(null=True,blank=True)
     schoolCategory=models.CharField(null=True,blank=True,max_length=50)
     principalName=models.CharField(null=True,blank=True,max_length=50)
@@ -37,15 +36,14 @@ class SchoolProfile(models.Model):
         return self.name
     def save(self,*args,**kwargs):
         self.slug=slugify(self.name)
-        return super(SchoolProfile,self).save(*args,**kwargs)
+        return super(SchoolProfileModel,self).save(*args,**kwargs)
     
-class SchoolStudent(models.Model):
-    schools=models.ForeignKey('school.SchoolProfile',on_delete=models.CASCADE,null=True,blank=True,related_name="studentSchools")
-    student=models.ForeignKey('student.StudentProfile',on_delete=models.CASCADE,related_name="students",null=True,blank=True)
+class SchoolStudentsModel(models.Model):
+    schoolProf=models.ForeignKey('school.SchoolProfileModel',on_delete=models.SET_NULL,null=True,blank=True,related_name="studentSchools")
+    studentProf=models.ForeignKey('student.StudentProfileModel',on_delete=models.SET_NULL,related_name="studentsSS",null=True,blank=True)
     studentName=models.CharField(max_length=60)
     email=models.EmailField()
-    phoneNo=models.BigIntegerField()
-    
+    phoneNo=models.BigIntegerField(null=True,blank=True)
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

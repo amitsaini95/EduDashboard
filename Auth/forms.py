@@ -1,8 +1,8 @@
 from django import forms
-from student.models import StudentProfile
+from student.models import StudentProfileModel
 from django.contrib.auth.forms import AuthenticationForm
 from .models import User
-from school.models import SchoolProfile
+from school.models import SchoolProfileModel
 
    
 class UserRegisterForm(AuthenticationForm):
@@ -11,7 +11,7 @@ class UserRegisterForm(AuthenticationForm):
         fields=('username','password')
 class schoolForm(forms.ModelForm):
     class Meta:
-        model=SchoolProfile
+        model=SchoolProfileModel
         fields=('__all__')
         exclude=('authAdmin','author','slug','publish','status','studentList')
     def __init__(self,*args,**kwargs):

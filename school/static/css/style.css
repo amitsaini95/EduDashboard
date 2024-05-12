@@ -40,13 +40,13 @@
 }	
 
 .main{
-    width: 82%;
+    width: 84%;
     float: right;
-    text-align: center;
     margin-top: 2rem;
- 
+   
 
 }
+
 .main .card-group{
    width:100%;
    padding:25px;

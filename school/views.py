@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect,HttpResponse
 from .models import *
 from .forms import studentForm,EditStudentProfileForm
-from student.models import StudentProfile
+from student.models import StudentProfileModel
 # Create your views here.
 def SchoolDashboardView(request):
-    school=SchoolStudent.objects.filter(schools__author=request.user)
+    school=SchoolStudentsModel.objects.filter(schoolProf__author=request.user)
     context={'school':school}
     return render(request,"base/schooldashboard.html",context)
 
@@ -19,9 +19,11 @@ def SchoolStudentView(request):
             user.author=userdata
             user.authAdmin=userdata
             user.save()
-            schoolstudentdata=SchoolStudent.objects.create(student=user)
-            schoolstudentdata.schools=user.schoolName
+            schoolstudentdata=SchoolStudentsModel.objects.create(studentProf=user)
+            schoolstudentdata.schoolProf=user.schoolName
             schoolstudentdata.studentName=user.name
+            schoolstudentdata.email=user.email
+            schoolstudentdata.phoneNo=user.phoneNo
             schoolstudentdata.save()
             return redirect('school:Dashboard')
     else:
@@ -32,13 +34,13 @@ def SchoolStudentView(request):
     return render(request,"base/register.html",context)
    
 def AllstudentView(request):
-    schoolStudnet=SchoolStudent.objects.filter(schools__author=request.user).order_by('-id')
+    schoolStudnet=SchoolStudentsModel.objects.filter(schoolProf__author=request.user).order_by('-id')
     context={
         'schoolStudent':schoolStudnet
     }
     return render(request,'base/allstudent.html',context)
 def EditStudentProfile(request,id):
-    instance=SchoolStudent.objects.get(id=id)
+    instance=SchoolStudentsModel.objects.get(id=id)
     if request.method == "POST":
         form=EditStudentProfileForm(request.POST,instance=instance)
         if form.is_valid():
