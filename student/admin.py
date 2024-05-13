@@ -9,4 +9,5 @@ admin.site.register(state)
 admin.site.register(city)
 admin.site.register(StudentClass)
 admin.site.register(StudentAttendance)
+admin.site.register(StudentVerification)
 

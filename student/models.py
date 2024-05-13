@@ -116,3 +116,13 @@ class StudentAttendance(models.Model):
 	def __str__(self):
 		return self.studentName.name
 
+class StudentVerification(models.Model):
+	studentName=models.ForeignKey('student.StudentProfileModel',on_delete=models.CASCADE)
+	schoolName=models.ForeignKey('school.SchoolProfileModel',on_delete=models.CASCADE)
+	author=models.ForeignKey('Auth.User',on_delete=models.CASCADE)
+	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft', null=True, blank=True)
+	publish = models.DateTimeField(default=timezone.now)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+	def __str__(self):
+		return self.studentName
