@@ -51,12 +51,19 @@
     
 
 }
+.active {
+    color: rgb(58, 50, 57) !important;
+    background-color: white;
+    border-radius: 20px;
+
+}
 .NavContainer .nav li a{
     font-size: 20px;
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    color: #f1f1f1;
+    color:#f1f1f1;
 }
+
 .MainContainer{
     width: 80%;
     float: right;
