@@ -67,5 +67,21 @@ class schoolBoard(models.Model):
 
 	class Meta:
 		verbose_name_plural = 'School-School Board'
+class schoolNotifications(models.Model):
+	name = models.CharField(max_length=250, null=True, blank=True)
+	school = models.ForeignKey('school.schoolProfileModel', related_name="schoolSN", on_delete=models.SET_NULL,null=True, blank=True)
+	description = models.TextField(null=True, blank=True)
+	author = models.ForeignKey('Auth.User', on_delete=models.CASCADE, related_name='authorSN', null=True, blank=True)
+	publish = models.DateTimeField(default=timezone.now)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='published')
+	
+	def __str__(self):
+		return self.description or '--Name not provided--'
+	
+	class Meta:
+		verbose_name_plural = 'School-School Notifications'
+
 
 

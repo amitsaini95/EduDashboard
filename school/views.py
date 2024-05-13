@@ -9,11 +9,8 @@ def SchoolDashboardView(request):
     school=SchoolStudentsModel.objects.filter(schoolProf__author=request.user)
     teacherdata=TeacherProfileModel.objects.filter(schoolName__name=request.user)
     StuAttend=StudentAttendance.objects.filter(school__author=request.user,status='published')
-  
-    print(StuAttend)
     context={'school':school,'TotalTeacher':teacherdata,'StudAttend':StuAttend}
     return render(request,"base/schooldashboard.html",context)
-
 def SchoolStudentView(request):
     if request.method == "POST":
         form=studentForm(request.POST,request.FILES)

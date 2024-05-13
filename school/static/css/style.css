@@ -1,6 +1,6 @@
 .NavContainer .sidenav {
     height:100%;
-    width: 20%;
+    width: 18%;
     position: fixed;
     z-index:1;
     top:0;
@@ -20,7 +20,6 @@
     font-size: 19px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-
 .sidenav .head_info .SchoolInfo img{
     width: 60px;
     height: 60px;
@@ -34,57 +33,47 @@
     color: #818181;
     display:block;
 }
-
 .sidenav a:hover{
     color:#f1f1f1;
 }	
-
-
 .NavContainer{
-    float: left;
-    
+    float: left;  
+}
+.NavContainer .NavBarItem{
+    margin-top: 2rem;
 }
 
-.NavContainer .nav li{
+.NavContainer .NavBarItem .nav li{
     display: block;
     width: 100%;
-    
-
+    padding: 5px;
 }
 .active {
     color: rgb(58, 50, 57) !important;
     background-color: white;
     border-radius: 20px;
-
 }
-.NavContainer .nav li a{
+.NavContainer .NavBarItem .nav li a{
     font-size: 20px;
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color:#f1f1f1;
 }
-
 .MainContainer{
-    width: 80%;
+    width: 82%;
     float: right;
-    overflow: hidden;
-
-    
+    overflow: hidden;   
 }
 .MainContainer .TeacherTable{
     overflow-x: scroll;
     width: 100%;
 }
-
 .main .card-group{
    width:100%;
    padding:20px;
    height: 100%;
-
-   
    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 25px 0px;
    text-align: center;
-
 }
 .MainContainer .card-group a{
     font-size: 16px;
