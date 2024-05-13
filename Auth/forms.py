@@ -10,6 +10,11 @@ class UserRegisterForm(AuthenticationForm):
     class Meta:
         model=User
         fields=('username','password')
+    def __init__(self,*args,**kwargs):
+        super(UserRegisterForm,self).__init__(*args,**kwargs)
+        for fieldName,fields in self.fields.items():
+            fields.widget.attrs['class']='form-control'
+
 class schoolForm(forms.ModelForm):
     class Meta:
         model=SchoolProfileModel
