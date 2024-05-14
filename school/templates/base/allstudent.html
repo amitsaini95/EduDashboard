@@ -1,8 +1,8 @@
 {% extends 'base/schoolBase.html' %}
 {% block content %}
   
-    <table class="table table-bordered table-striped">
-        <thead>
+    <table class="table my-2">
+        <thead style="background-color: rgb(73, 100, 150);color: white;text-transform: capitalize;"">
           <tr>
             <th scope="col">S.NO</th>
             <th scope="col">Name</th>
@@ -14,13 +14,13 @@
         </thead>
         <tbody>
             {% for stuSchool in schoolStudent %}
-          <tr>
+          <tr style="color:rgb(8, 97, 92);font-size: 16px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
             <th scope="row">{{forloop.counter}}</th>
             <td>{{stuSchool.studentName}}</td>
-            <td>{{stuSchool.email}}</td>
-            <td>{{stuSchool.phoneNo}}</td>
-            <td>{{stuSchool.schoolProf}}</td>
-            <td><a href="{% url 'school:editstudentprofile' stuSchool.id %} ">Edit</a></td>
+            <td>{{stuSchool.studentName.email}}</td>
+            <td>{{stuSchool.studentName.phoneNo}}</td>
+            <td>{{stuSchool.schoolName}}</td>
+            <td><a href="{% url 'school:editstudentprofile' stuSchool.id %} "><i class="bi bi-pencil-square"></i></a></td>
           </tr>
           {% endfor %}
          

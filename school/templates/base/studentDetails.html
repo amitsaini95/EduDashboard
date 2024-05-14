@@ -1,0 +1,45 @@
+{% extends 'base/schoolBase.html' %}
+{% block content %}
+
+<div class="student_info">
+    <div class="row">
+        <div class="col-3">
+            <div class="student_Detail">
+            <a href="{% url 'school:Allstudentlist' %}">
+            <div class="studentlistOne">
+                
+                <h6>view all student </h6>
+                <p><i class="bi bi-eye"></i></p>
+
+            </div>
+            </a>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="student_Detail">
+            <div class="studentlistTwo">
+                <h6>Add student</h6>
+                <p><i class="bi bi-calendar-plus-fill"></i></p>
+            </div>
+            </div>
+        </div> <div class="col-3">
+            <div class="student_Detail">
+            <div class="studentlistThree">
+                <h6>Approve student </h6>
+                <p><i class="bi bi-check2-square"></i></p>
+            </div>
+            </div>
+        </div> <div class="col-3">
+            <div class="student_Detail">
+            <div class="studentlistFour">
+                <h6>view student fees </h6>
+                <p><i class="bi bi-currency-rupee"></i></p>
+            </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
