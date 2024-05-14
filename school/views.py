@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect,HttpResponse
+from django.shortcuts import render,redirect,HttpResponse,get_object_or_404
 from .models import *
 from .forms import studentForm,EditStudentProfileForm
 from teacher.forms import AddTeacherForm,EditTeacherForm
@@ -28,6 +28,7 @@ def SchoolStudentView(request):
             schoolstudentdata.author=user.name
             schoolstudentdata.email=user.email
             schoolstudentdata.phoneNo=user.phoneNo
+            schoolstudentdata.schoolbystudentVerify=user
             schoolstudentdata.save()
             return redirect('school:Dashboard')
     else:
@@ -54,7 +55,8 @@ def AddTeacherView(request):
     return render(request,"base/addteacher.html",context)
    
 def AllstudentView(request):
-    schoolStudnet=StudentVerification.objects.filter(schoolName__author=request.user)
+    schoolStudnet=SchoolStudentsModel.objects.filter(schoolProf__author=request.user,schoolbystudentVerify=True)
+    
     print(schoolStudnet)
     context={
         'schoolStudent':schoolStudnet
@@ -78,7 +80,7 @@ def TeacherListView(request):
     context={'teachers':teacherdata}
     return render(request,"base/allteacher.html",context)
 def EditTeacherView(request,id):
-    instance=TeacherProfileModel.objects.get(id=id)
+    instance=get_object_or_404(TeacherProfileModel,id=id)
     if request.method == "POST":
         form=EditTeacherForm(request.POST,instance=instance)
         if form.is_valid():
@@ -100,7 +102,6 @@ def StudentDetailsView(request):
     return render(request,"base/studentDetails.html")
 def studentApproveView(request):
     StuApprove=SchoolStudentsModel.objects.filter(schoolProf__author=request.user,schoolbystudentVerify=False)
-
     context={
         'stuData':StuApprove
     }

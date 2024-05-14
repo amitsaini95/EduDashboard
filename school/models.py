@@ -40,8 +40,8 @@ class SchoolProfileModel(models.Model):
     
 class SchoolStudentsModel(models.Model):
 	author=models.ForeignKey('Auth.User',on_delete=models.CASCADE,null=True,blank=True)
-	schoolProf=models.ForeignKey('school.SchoolProfileModel',on_delete=models.SET_NULL,null=True,blank=True,related_name="studentSchools")
-	studentProf=models.ForeignKey('student.StudentProfileModel',on_delete=models.SET_NULL,related_name="studentsSS",null=True,blank=True)
+	schoolProf=models.ForeignKey('school.SchoolProfileModel',on_delete=models.CASCADE,null=True,blank=True,related_name="studentSchools")
+	studentProf=models.ForeignKey('student.StudentProfileModel',on_delete=models.CASCADE,related_name="studentsSS",null=True,blank=True)
 	studentName=models.CharField(max_length=60)
 	email=models.EmailField()
 	phoneNo=models.BigIntegerField(null=True,blank=True)
