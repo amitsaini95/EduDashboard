@@ -6,36 +6,24 @@
         <div class="col-3">
             
             <div class="card-group">
-                <a href="{% url 'school:Allstudentlist' %}">
-           
-                
+
             <h5>Total student: <span>{{school.count}}</span></h5>
          </a>
             </div>
         </div>
         <div class="col-3 ">
                <div class="card-group">
-
-                <a href="{% url 'school:teacherlist' %}">
-           
-                
                     <h5>Total Teacher: <span>{{TotalTeacher.count}}</span></h5>
-                 </a>
+                 
             </div>
         </div>
         <div class="col-3 ">
                <div class="card-group">
-                <a href="{% url 'school:studentAttendanceList' %}">
-           
-                
-                    <h5>Total student Attendance: <span>{{StudAttend.count}}</span></h5>
-                 </a>
-
+                 <h5>Total student Attendance: <span>{{StudAttend.count}}</span></h5>
             </div>
         </div>
         <div class="col-3 ">
                <div class="card-group">
-
             <h5>Total student</h5>
             </div>
         </div>

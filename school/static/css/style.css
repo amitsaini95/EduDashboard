@@ -27,7 +27,6 @@
     border: 1px solid grey;
 }
 .sidenav a {
-    padding:6px 8px 6px 16px;
     text-decoration: none;
     font-size:25px;
     color: #818181;
@@ -39,14 +38,14 @@
 .NavContainer{
     float: left;  
 }
-.NavContainer .NavBarItem{
+.NavContainer .NavBarItem .nav{
     margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
 }
-
 .NavContainer .NavBarItem .nav li{
-    display: block;
-    width: 100%;
-    padding: 5px;
+   list-style-type: none;
+   display: block;
 }
 .active {
     color: rgb(58, 50, 57) !important;
@@ -55,9 +54,14 @@
 }
 .NavContainer .NavBarItem .nav li a{
     font-size: 20px;
-    text-align: center;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family:fantasy;
     color:#f1f1f1;
+    text-align: center;
+}
+.NavContainer .NavBarItem .nav li a i{
+   float: left;
+   margin-right:5px;
+
 }
 .MainContainer{
     width: 82%;
