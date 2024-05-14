@@ -12,6 +12,7 @@ class TeacherProfileModel(models.Model):
     schoolName=models.ForeignKey('school.SchoolProfileModel',on_delete=models.CASCADE,related_name="teacherSchool")
     profile=models.ImageField(upload_to="teacherProfile",null=True,blank=True)
     address=models.TextField()
+    salary=models.IntegerField(blank=True,null=True)
     city=models.ForeignKey('student.city',on_delete=models.CASCADE,related_name="teacherCity")
     state=models.ForeignKey('student.state',on_delete=models.CASCADE,related_name="teacherState")
     role=models.CharField(max_length=100)

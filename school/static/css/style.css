@@ -5,7 +5,8 @@
     z-index:1;
     top:0;
     left:0;
-    background-color:#111;
+    background-color:#1e495afd;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
     overflow-x:hidden;
     padding-top:20px;
 }
@@ -26,12 +27,7 @@
     border-radius: 50%;
     border: 1px solid grey;
 }
-.sidenav a {
-    text-decoration: none;
-    font-size:25px;
-    color: #818181;
-    display:block;
-}
+
 .sidenav a:hover{
     color:#f1f1f1;
 }	
@@ -55,7 +51,7 @@
 .NavContainer .NavBarItem .nav li a{
     font-size: 20px;
     font-family:fantasy;
-    color:#f1f1f1;
+    color:#ffffff;
     text-align: center;
 }
 .NavContainer .NavBarItem .nav li a i{
