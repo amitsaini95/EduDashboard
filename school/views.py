@@ -99,9 +99,9 @@ def StudentAttendanceView(request):
 def StudentDetailsView(request):
     return render(request,"base/studentDetails.html")
 def studentApproveView(request):
-    StuApprove=SchoolStudentsModel.objects.filter(schoolProf__author=request.user)
-    StuVerify=StudentVerification.objects.create(studentName=StuApprove)
-    StuVerify.schoolName=StuApprove
-    StuVerify.author=StuApprove
-    StuVerify.save()
-    return render(request,"base/studentapprovelist.html")
+    StuApprove=SchoolStudentsModel.objects.filter(schoolProf__author=request.user,schoolbystudentVerify=False)
+
+    context={
+        'stuData':StuApprove
+    }
+    return render(request,"base/studentapprovelist.html",context)

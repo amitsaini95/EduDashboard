@@ -13,7 +13,7 @@ class studentForm(forms.ModelForm):
 class EditStudentProfileForm(forms.ModelForm):
     class Meta:
         model=SchoolStudentsModel
-        fields=('studentName','email','phoneNo','schoolProf')
+        fields=('studentName','email','phoneNo','schoolProf','schoolbystudentVerify')
     def __init__(self,*args,**kwargs):
         super(EditStudentProfileForm,self).__init__(*args,**kwargs)
         for fieldName,fields in self.fields.items():

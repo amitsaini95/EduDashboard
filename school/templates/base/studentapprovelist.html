@@ -1,5 +1,6 @@
 {% extends 'base/schoolBase.html' %}
 {% block content %}
+{% if stuData %}
 <table class="table table-bordered my-2">
     <thead style="background-color: rgb(73, 100, 150);color: white;text-transform: capitalize;"">
       <tr>
@@ -8,21 +9,26 @@
         <th scope="col">email</th>
         <th scope="col">phoneno</th>
         <th scope="col">school Name</th>
+        <th scope="col">Approved</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-        {% for stuSchool in schoolStudent %}
+        {% for stuSchool in stuData %}
       <tr style="color:rgb(30, 109, 119);font-size: 16px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
         <th scope="row">{{forloop.counter}}</th>
-        <td>{{stuSchool.studentName}}</td>
-        <td>{{stuSchool.studentName.email}}</td>
-        <td>{{stuSchool.studentName.phoneNo}}</td>
-        <td>{{stuSchool.schoolName}}</td>
+        <td>{{stuSchool.studentProf.name}}</td>
+        <td>{{stuSchool.studentProf.email}}</td>
+        <td>{{stuSchool.studentProf.phoneNo}}</td>
+        <td>{{stuSchool.schoolProf}}</td>
+        <td>{% if stuSchool.schoolbystudentVerify %}Yes{% else %} No{% endif %}</td>
         <td><a href="{% url 'school:editstudentprofile' stuSchool.id %} "><i class="bi bi-pencil-square"></i></a></td>
       </tr>
       {% endfor %}
-     
+
+      {% else %}
+      <h5 class="text-danger">No Data </h5>
+     {% endif %}
     </tbody>
   </table>
 
