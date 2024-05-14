@@ -1,6 +1,6 @@
 {% extends 'base/schoolBase.html' %}
 {% block content %}
-  
+  {% if schoolStudent %}
     <table class="table table-bordered my-2">
         <thead style="background-color: rgb(73, 100, 150);color: white;text-transform: capitalize;"">
           <tr>
@@ -14,17 +14,20 @@
         </thead>
         <tbody>
             {% for stuSchool in schoolStudent %}
-          <tr style="color:rgba(90, 71, 6, 0.315);font-size: 16px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+          <tr style="color:rgba(6, 23, 48, 0.925);font-size: 16px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
             <th scope="row">{{forloop.counter}}</th>
-            <td>{{stuSchool.studentName}}</td>
-            <td>{{stuSchool.studentName.email}}</td>
-            <td>{{stuSchool.studentName.phoneNo}}</td>
-            <td>{{stuSchool.schoolName}}</td>
+            <td>{{stuSchool.studentProf}}</td>
+            <td>{{stuSchool.studentProf.email}}</td>
+            <td>{{stuSchool.studentProf.phoneNo}}</td>
+            <td>{{stuSchool.schoolProf.name}}</td>
             <td><a href="{% url 'school:editstudentprofile' stuSchool.id %} "><i class="bi bi-pencil-square"></i></a></td>
           </tr>
           {% endfor %}
          
         </tbody>
       </table>
+      {% else %}
+      <h4 class="text-danger">No data </h4>
+      {% endif %}
 
 {% endblock %}

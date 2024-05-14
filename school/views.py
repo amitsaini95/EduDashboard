@@ -56,8 +56,6 @@ def AddTeacherView(request):
    
 def AllstudentView(request):
     schoolStudnet=SchoolStudentsModel.objects.filter(schoolProf__author=request.user,schoolbystudentVerify=True)
-    
-    print(schoolStudnet)
     context={
         'schoolStudent':schoolStudnet
     }
@@ -68,7 +66,7 @@ def EditStudentProfile(request,id):
         form=EditStudentProfileForm(request.POST,instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('school:Allstudentlist')
+            return redirect('school:StudentDetaillist')
     else:
         form=EditStudentProfileForm(instance=instance)
     context={

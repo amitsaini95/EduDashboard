@@ -53,13 +53,14 @@
     font-family:fantasy;
     color:#ffffff;
     text-align: center;
+    margin-right: 20px;
 }
 .NavContainer .NavBarItem .nav li a i{
    float: left;
-   margin-right:5px;
+   margin-left:34px !important;
+   
 
 }
-
 .MainContainer .student_info .student_Detail a,h6{
     font-size: 18px;
     color: #fff !important;
