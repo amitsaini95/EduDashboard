@@ -120,6 +120,7 @@ class StudentVerification(models.Model):
 	studentName=models.ForeignKey('student.StudentProfileModel',on_delete=models.CASCADE)
 	schoolName=models.ForeignKey('school.SchoolProfileModel',on_delete=models.CASCADE)
 	author=models.ForeignKey('Auth.User',on_delete=models.CASCADE)
+	name=models.CharField(max_length=60)
 	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft', null=True, blank=True)
 	publish = models.DateTimeField(default=timezone.now)
 	created = models.DateTimeField(auto_now_add=True)

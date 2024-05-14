@@ -25,6 +25,7 @@ def SchoolStudentView(request):
             schoolstudentdata=SchoolStudentsModel.objects.create(studentProf=user)
             schoolstudentdata.schoolProf=user.schoolName
             schoolstudentdata.studentName=user.name
+            schoolstudentdata.author=user.name
             schoolstudentdata.email=user.email
             schoolstudentdata.phoneNo=user.phoneNo
             schoolstudentdata.save()
@@ -34,7 +35,7 @@ def SchoolStudentView(request):
     context={
         'form':form
     }
-    return render(request,"base/register.html",context)
+    return render(request,"base/addstudent.html",context)
 def AddTeacherView(request):
     if request.method == "POST":
         form=AddTeacherForm(request.POST)
@@ -44,10 +45,7 @@ def AddTeacherView(request):
             userdata.set_password(user.name[:3]+'@123')
             userdata.save()
             user.author=userdata
-            
-            user.save()
-        
-            
+            user.save()  
     else:
         form=AddTeacherForm()
     context={
@@ -100,3 +98,10 @@ def StudentAttendanceView(request):
     return render(request,"base/studentattendance.html",context)
 def StudentDetailsView(request):
     return render(request,"base/studentDetails.html")
+def studentApproveView(request):
+    StuApprove=SchoolStudentsModel.objects.filter(schoolProf__author=request.user)
+    StuVerify=StudentVerification.objects.create(studentName=StuApprove)
+    StuVerify.schoolName=StuApprove
+    StuVerify.author=StuApprove
+    StuVerify.save()
+    return render(request,"base/studentapprovelist.html")

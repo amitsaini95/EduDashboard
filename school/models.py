@@ -39,18 +39,20 @@ class SchoolProfileModel(models.Model):
         return super(SchoolProfileModel,self).save(*args,**kwargs)
     
 class SchoolStudentsModel(models.Model):
-    schoolProf=models.ForeignKey('school.SchoolProfileModel',on_delete=models.SET_NULL,null=True,blank=True,related_name="studentSchools")
-    studentProf=models.ForeignKey('student.StudentProfileModel',on_delete=models.SET_NULL,related_name="studentsSS",null=True,blank=True)
-    studentName=models.CharField(max_length=60)
-    email=models.EmailField()
-    phoneNo=models.BigIntegerField(null=True,blank=True)
-    publish = models.DateTimeField(default=timezone.now)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
-    def __str__(self):
-        return self.studentName
-  
+	author=models.ForeignKey('Auth.User',on_delete=models.CASCADE,null=True,blank=True)
+	schoolProf=models.ForeignKey('school.SchoolProfileModel',on_delete=models.SET_NULL,null=True,blank=True,related_name="studentSchools")
+	studentProf=models.ForeignKey('student.StudentProfileModel',on_delete=models.SET_NULL,related_name="studentsSS",null=True,blank=True)
+	studentName=models.CharField(max_length=60)
+	email=models.EmailField()
+	phoneNo=models.BigIntegerField(null=True,blank=True)
+	publish = models.DateTimeField(default=timezone.now)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+	schoolbystudentVerify=models.BooleanField(null=True,default=False)
+	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+	def __str__(self):
+		return self.studentName
+
 class schoolBoard(models.Model):
 	name = models.CharField(max_length=250, null=True, blank=True)
 	slug = models.SlugField(max_length=250, unique=True, null=True, blank=True)
