@@ -60,29 +60,31 @@
 
 }
 
-.student_info .student_Detail,h6{
+.MainContainer .student_info .student_Detail a,h6{
     font-size: 18px;
-    color: #fff;
+    color: #fff !important;
     text-transform:capitalize;  
     font-weight: 500;  
+    text-decoration: none;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-.student_info .studentlistOne,.studentlistTwo,.studentlistThree,.studentlistFour{
+ .MainContainer .student_info .studentlistOne,.studentlistTwo,.studentlistThree,.studentlistFour{
 padding: 20px;   
 border-radius: 15px;
 margin-top: 10px;
+color: #fff;
 
 }
-.student_info .studentlistOne{
+ .MainContainer .student_info .studentlistOne{
     background: rgb(15, 92, 75);
 }
-.student_info .studentlistTwo{
+.MainContainer .student_info .studentlistTwo{
     background: rgba(247, 164, 56, 0.884);
 }
-.student_info .studentlistThree{
+.MainContainer .student_info .studentlistThree{
     background: rgba(75, 35, 102, 0.884);
 }
-.student_info .studentlistFour{
+.MainContainer .student_info .studentlistFour{
     background: rgba(73, 27, 27, 0.884);
 }
 .MainContainer{

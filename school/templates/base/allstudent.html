@@ -1,7 +1,7 @@
 {% extends 'base/schoolBase.html' %}
 {% block content %}
   
-    <table class="table my-2">
+    <table class="table table-bordered my-2">
         <thead style="background-color: rgb(73, 100, 150);color: white;text-transform: capitalize;"">
           <tr>
             <th scope="col">S.NO</th>
@@ -14,7 +14,7 @@
         </thead>
         <tbody>
             {% for stuSchool in schoolStudent %}
-          <tr style="color:rgb(8, 97, 92);font-size: 16px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+          <tr style="color:rgb(30, 109, 119);font-size: 16px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
             <th scope="row">{{forloop.counter}}</th>
             <td>{{stuSchool.studentName}}</td>
             <td>{{stuSchool.studentName.email}}</td>
