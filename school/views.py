@@ -106,5 +106,8 @@ def studentApproveView(request):
     return render(request,"base/studentapprovelist.html",context)
 
 def TeacherDetailsView(request):
-
     return render(request,"base/teacherDetails.html")
+def TeacherApproveView(request):
+    teacherList=TeacherProfileModel.objects.filter(schoolName__author=request.user,teacherVerifyBySchool=False)
+    print(teacherList)
+    return render(request,"")

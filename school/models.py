@@ -92,7 +92,6 @@ class SchoolTeacherVerification(models.Model):
 	teacherProf=models.ForeignKey('teacher.TeacherProfileModel',on_delete=models.CASCADE)
 	schoolProf=models.ForeignKey('school.SchoolProfileModel',on_delete=models.CASCADE)
 	author=models.ForeignKey('Auth.User',on_delete=models.CASCADE)
-	teacherVerifyBySchool=models.BooleanField(max_length=20,default=False)
 	publish = models.DateTimeField(default=timezone.now)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)

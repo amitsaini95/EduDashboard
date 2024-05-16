@@ -8,6 +8,7 @@ urlpatterns=[
     path('teacher',views.TeacherDetailsView,name="TeacherDetaillist"),
     path('allstudent',views.AllstudentView,name="Allstudentlist"),
     path('studentApproveList',views.studentApproveView,name="studentApprovelist"),
+    path('teacherApproveList',views.TeacherApproveView,name="TeacherApprovelist"),
     path('student_Profile/<int:id>',views.EditStudentProfile,name="editstudentprofile"),
     path('teacherProfile/<int:id>',views.EditTeacherView,name="editTeacherProfile"),
     path('addteacher',views.AddTeacherView,name="addteacher"),
