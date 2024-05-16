@@ -104,3 +104,7 @@ def studentApproveView(request):
         'stuData':StuApprove
     }
     return render(request,"base/studentapprovelist.html",context)
+
+def TeacherDetailsView(request):
+
+    return render(request,"base/teacherDetails.html")
