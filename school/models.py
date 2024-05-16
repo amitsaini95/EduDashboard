@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from Auth.models import User 
 from student.models import *
+from teacher.models import *
 # Create your models here.
 
 STATUS_CHOICES = (
@@ -85,5 +86,19 @@ class schoolNotifications(models.Model):
 	class Meta:
 		verbose_name_plural = 'School-School Notifications'
 
+
+class SchoolTeacherVerification(models.Model):
+	teacherName=models.CharField(max_length=100)
+	teacherProf=models.ForeignKey('teacher.TeacherProfileModel',on_delete=models.CASCADE)
+	schoolProf=models.ForeignKey('school.SchoolProfileModel',on_delete=models.CASCADE)
+	author=models.ForeignKey('Auth.User',on_delete=models.CASCADE)
+	teacherVerifyBySchool=models.BooleanField(max_length=20,default=False)
+	publish = models.DateTimeField(default=timezone.now)
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
+	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='published')
+
+	def __str__(self):
+		return self.teacherName or '--Name not provided--'
 
 
