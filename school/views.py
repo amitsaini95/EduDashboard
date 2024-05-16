@@ -110,4 +110,7 @@ def TeacherDetailsView(request):
 def TeacherApproveView(request):
     teacherList=TeacherProfileModel.objects.filter(schoolName__author=request.user,teacherVerifyBySchool=False)
     print(teacherList)
-    return render(request,"")
+    context={
+        'teacherlist':teacherList
+    }
+    return render(request,"base/teacherapprovelist.html",context)
