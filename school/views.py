@@ -84,7 +84,7 @@ def EditTeacherView(request,id):
         form=EditTeacherForm(request.POST,instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('school:TeacherDetaillist')
     else:
         form=EditTeacherForm(instance=instance)
     context={
