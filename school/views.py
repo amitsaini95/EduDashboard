@@ -74,7 +74,8 @@ def EditStudentProfile(request,id):
     }
     return render(request,"base/editstudentProfile.html",context)
 def TeacherListView(request):
-    teacherdata=TeacherProfileModel.objects.filter(schoolName__author=request.user).order_by('-id')
+    teacherdata=TeacherProfileModel.objects.filter(schoolName__author=request.user,teacherVerifyBySchool='Verify')
+    print(teacherdata)
     context={'teachers':teacherdata}
     return render(request,"base/allteacher.html",context)
 def EditTeacherView(request,id):
@@ -108,7 +109,7 @@ def studentApproveView(request):
 def TeacherDetailsView(request):
     return render(request,"base/teacherDetails.html")
 def TeacherApproveView(request):
-    teacherList=TeacherProfileModel.objects.filter(schoolName__author=request.user,teacherVerifyBySchool=False)
+    teacherList=TeacherProfileModel.objects.filter(schoolName__author=request.user,teacherVerifyBySchool='NotVerify')
     print(teacherList)
     context={
         'teacherlist':teacherList
