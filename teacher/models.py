@@ -1,10 +1,15 @@
 from django.db import models
 from student.models import *
 from school.models import *
-
+from django.utils import timezone
+import datetime
 VERIFY=(
     ('Verify','Verify'),
     ('NotVerify','NotVerify')
+)
+ATTENDANCE=(
+    ('Present','Present'),
+    ('Absence','Absence')
 )
 # Create your models here.
 class TeacherProfileModel(models.Model):
@@ -28,3 +33,12 @@ class TeacherProfileModel(models.Model):
         return self.name
 
     
+class TeacherAttendanceModel(models.Model):
+    teacherName=models.ForeignKey(TeacherProfileModel,on_delete=models.CASCADE)
+    schoolName=models.ForeignKey('school.SchoolProfileModel',on_delete=models.CASCADE)
+    teacherAttend=models.CharField(max_length=10,choices=ATTENDANCE,default="Absence")
+    date=models.DateTimeField(default=timezone.now())
+    created=models.DateTimeField(auto_now_add=True)
+    updated=models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.teacherName.name
