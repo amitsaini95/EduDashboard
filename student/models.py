@@ -24,6 +24,11 @@ STATUS_CHOICES = (
 	('draft', 'Draft'),
 	('published', 'Published'),
 )
+ATTENDANCE = (
+	('Present', 'Present'),
+	('Absence', 'Absence'),
+)
+  
   
 
 class StudentClass(models.Model):
@@ -111,8 +116,9 @@ class StudentAttendance(models.Model):
 	studentName=models.ForeignKey('student.StudentProfileModel',on_delete=models.CASCADE)
 	teacher=models.ForeignKey('teacher.TeacherProfileModel',on_delete=models.CASCADE)
 	section=models.CharField(max_length=10)
+	stuAttend=models.CharField(max_length=10,choices=ATTENDANCE,default='Absence', null=True, blank=True)
 	status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft', null=True, blank=True)
-	publish = models.DateTimeField(default=timezone.now)
+	date = models.DateTimeField(default=timezone.now)
 	created = models.DateTimeField(auto_now_add=True)
 	updated = models.DateTimeField(auto_now=True)
 	def __str__(self):

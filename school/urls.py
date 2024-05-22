@@ -13,5 +13,6 @@ urlpatterns=[
     path('teacherProfile/<int:id>',views.EditTeacherView,name="editTeacherProfile"),
     path('addteacher',views.AddTeacherView,name="addteacher"),
     path('teacherList',views.TeacherListView,name="teacherlist"),
-    path('student-attendance',views.StudentAttendanceView,name="studentAttendanceList")
+    path('attendance',views.StudentTeacherAttendanceView,name="studentAttendanceList"),
+    path('studentAttendance',views.StudentAttendanceView,name="STUattendanceList")
 ]

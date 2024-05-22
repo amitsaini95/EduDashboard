@@ -91,12 +91,8 @@ def EditTeacherView(request,id):
         'form':form
     }
     return render(request,"base/editteacher.html",context)
-def StudentAttendanceView(request):
-    stuData=StudentAttendance.objects.filter(school__author=request.user)
-    context={
-      'stuData':stuData
-    }
-    return render(request,"base/studentattendance.html",context)
+def StudentTeacherAttendanceView(request):
+    return render(request,"base/studentattendancedetials.html")
 def StudentDetailsView(request):
     return render(request,"base/studentDetails.html")
 def studentApproveView(request):
@@ -115,3 +111,5 @@ def TeacherApproveView(request):
         'teacherlist':teacherList
     }
     return render(request,"base/teacherapprovelist.html",context)
+def StudentAttendanceView(request):
+    return render(request,"base/studentAllViewAttendance.html")
